@@ -80,7 +80,25 @@ public class Main {
 
 
 //8-ci task
+        var namesTogether = List.of(new Employee(1, "Anar", "IT", 3500, 25),
+                        new Employee(2, "Leyla", "HR", 3200, 30),
+                        new Employee(2, "Leyla", "IT", 3600, 33))
+                .stream()
+                .map(Employee::getFirstName)
+                .collect(Collectors.joining(","));
+        System.out.println(namesTogether);
 
-
+//10-cu task
+        var result2 = List.of(new Employee(1, "Anar", "IT", 3500, 25),
+                        new Employee(2, "Leyla", "HR", 1200, 30),
+                        new Employee(2, "Leyla", "PAR", 3600, 33),
+                        new Employee(2, "Leyla", "MMD", 3600, 33) )
+                .stream()
+                .filter(a-> a.getSalary()>2500)
+                .map(Employee::getDepartment)
+                .sorted()
+                .findFirst()
+                .orElse("Hec bir ad tapılmadı");
+        System.out.println(result2); // Nəticəni burada çap edirik
     }
 }
